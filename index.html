@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Miles Morales | Mobile Profile</title>
+    <title>Portfolio | Mobile Profile</title>
     <!-- We reuse the existing stylesheet but add app-like overrides -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
@@ -13,28 +14,33 @@
         body {
             overflow: hidden;
             touch-action: pan-y;
+            height: 100dvh;
         }
 
         .app-container {
             flex-direction: column;
             padding: 0;
             gap: 0;
-            height: 100vh;
+            height: 100dvh;
             width: 100vw;
         }
 
         /* Top Mobile Header */
         .mobile-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1rem;
-            background: var(--bg-panel);
+            background: rgba(0, 0, 0, 0.5);
             border-bottom: 1px solid rgba(255, 42, 42, 0.2);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            z-index: 20;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 60;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
         .mobile-header img {
@@ -52,11 +58,24 @@
             flex: 1;
             border-radius: 0;
             border: none;
-            padding: 1.5rem 1rem 6rem 1rem; /* Extra 6rem bottom padding for nav */
+            padding: 6rem 1rem 8rem 1rem;
+            /* Increased bottom padding to 8rem to ensure footer/buttons are visible */
             overflow-y: auto;
             position: relative;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0, 0, 0, 0.3);
             box-shadow: none;
+        }
+
+        /* Mobile Footer */
+        .app-footer {
+            text-align: center;
+            padding: 2rem 0 1rem 0;
+            color: var(--text-muted);
+            font-size: 0.50rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+            opacity: 0.7;
         }
 
         /* Fixed App-like Bottom Navigation */
@@ -71,9 +90,10 @@
             border-top: 1px solid rgba(255, 42, 42, 0.2);
             display: flex;
             justify-content: space-around;
-            padding: 0.7rem 0 1.2rem 0; /* Extra padding for modern phones */
+            padding: 0.7rem 0 1.2rem 0;
+            /* Extra padding for modern phones */
             z-index: 50;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .bottom-nav .nav-item {
@@ -109,25 +129,60 @@
         }
 
         /* Dashboard Tweaks for Smaller Screens */
-        .dashboard-header h1 { font-size: 1.8rem; }
-        .glitch { font-size: 2.8rem; }
-        .hero-desc { font-size: 1rem; }
-        .bio-header { flex-direction: column; text-align: center; gap: 0.5rem; }
-        .bio-details { grid-template-columns: 1fr; }
-        .action-buttons { flex-direction: column; width: 100%; }
-        .btn { width: 100%; margin: 0 !important; }
-        .diagnostic-panel { width: 100%; height: 250px; max-width: 250px; margin: 2rem auto; }
-        .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
+        .dashboard-header h1 {
+            font-size: 1.8rem;
+        }
+
+        .glitch {
+            font-size: 2.8rem;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+        }
+
+        .bio-header {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .bio-details {
+            grid-template-columns: 1fr;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .btn {
+            width: 100%;
+            margin: 0 !important;
+        }
+
+        .diagnostic-panel {
+            width: 100%;
+            height: 250px;
+            max-width: 250px;
+            margin: 2rem auto;
+        }
+
+        .skills-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
     </style>
 </head>
+
 <body>
     <div class="background-overlay"></div>
     <div class="web-particles" id="particles"></div>
-    
+
     <div class="app-container">
         <!-- Mobile Top Header -->
         <header class="mobile-header">
-            <img src="assets/logo.png" alt="Spider Logo">
+            <img src="assets/logoo.png" alt="Spider Logo">
         </header>
 
         <!-- Main Content Area -->
@@ -142,10 +197,16 @@
                     <div class="glitch-wrapper">
                         <h2 class="glitch" data-text="SHISHIR X">SHISHIR X</h2>
                     </div>
-                    <p class="hero-desc">A Good Front-end Web Developer & Friendly Neighborhood Coder. Swinging through the digital world crafting premium, high-performance web experiences with sleek designs and robust functionality.Currently pursuing a Bachelor of Computer Applications (BCA) with a focus on developing technical and analytical skills.</p>
+                    <p class="hero-desc">A Good Front-end Web Developer & Friendly Neighborhood Coder. Swinging through
+                        the digital world crafting premium, high-performance web experiences with sleek designs and
+                        robust functionality.Currently pursuing a Bachelor of Computer Applications (BCA) with a focus
+                        on developing technical and analytical skills.</p>
                     <div class="action-buttons">
                         <button class="btn primary" onclick="switchTab('missions')">View Missions</button>
-                        <a href="https://www.instagram.com/5hi5hir_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="btn secondary" style="margin-top: 10px; text-decoration: none; display: inline-block; text-align: center;">Contact HQ</a>
+                        <a href="https://www.instagram.com/5hi5hir_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            class="btn secondary"
+                            style="margin-top: 10px; text-decoration: none; display: inline-block; text-align: center;">Contact
+                            HQ</a>
                     </div>
                 </div>
             </section>
@@ -165,13 +226,15 @@
                         </div>
                     </div>
                     <div class="bio-details">
-                        <div class="bio-row"><span>Codename:</span> SHISHIR-KIRAN</div>
+                        <div class="bio-row"><span>Codername:</span> SHISHIR-KIRAN</div>
                         <div class="bio-row"><span>Base of Ops:</span> Manglore,IN</div>
                         <div class="bio-row"><span>Clearance:</span> Ultra-Secret</div>
                         <div class="bio-row"><span>Status:</span> Active / Web-Swinging</div>
                     </div>
                     <p class="bio-description" style="font-size: 0.95rem;">
-                        Dedicated and highly agile Front-End Developer with a knack for spinning complex webs of code into seamless user experiences. Specializes in rapid problem-solving, intuitive UI/UX design, and fighting bugs across the digital multiverse.
+                        Dedicated and highly agile Front-End Developer with a knack for spinning complex webs of code
+                        into seamless user experiences. Specializes in rapid problem-solving, intuitive UI/UX design,
+                        and fighting bugs across the digital multiverse.
                     </p>
                 </div>
             </section>
@@ -186,21 +249,24 @@
                     <div class="mission-card">
                         <div class="card-inner">
                             <h3>E-Commerce Webapp</h3>
-                            <p>Built a high-performance storefront with React & Node.js. Integrated Stripe for secure checkouts.</p>
+                            <p>Built a high-performance storefront with React & Node.js. Integrated Stripe for secure
+                                checkouts.</p>
                             <span class="status complete">Completed</span>
                         </div>
                     </div>
                     <div class="mission-card">
                         <div class="card-inner">
                             <h3>AI Analytics Dashboard</h3>
-                            <p>Real-time data visualization tool for tracking city-wide server nodes using WebSockets and D3.js.</p>
+                            <p>Real-time data visualization tool for tracking city-wide server nodes using WebSockets
+                                and D3.js.</p>
                             <span class="status complete">Completed</span>
                         </div>
                     </div>
                     <div class="mission-card">
                         <div class="card-inner">
                             <h3>Quantum Secure API</h3>
-                            <p>Hardened authentication service resisting breach attempts using advanced JWT and OAuth2 flows.</p>
+                            <p>Hardened authentication service resisting breach attempts using advanced JWT and OAuth2
+                                flows.</p>
                             <span class="status ongoing">Ongoing</span>
                         </div>
                     </div>
@@ -217,19 +283,27 @@
                     <div class="skill-group">
                         <div class="skill-bar">
                             <span class="label">HTML / CSS</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 95%"></div></div>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 95%"></div>
+                            </div>
                         </div>
                         <div class="skill-bar">
                             <span class="label">C & DS in C</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 20%"></div></div>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 20%"></div>
+                            </div>
                         </div>
                         <div class="skill-bar">
                             <span class="label">UI & UX</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 90%"></div></div>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 90%"></div>
+                            </div>
                         </div>
                         <div class="skill-bar">
                             <span class="label">Cybersecurity Protocols</span>
-                            <div class="bar-bg"><div class="bar-fill" style="width: 75%"></div></div>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 75%"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="diagnostic-panel">
@@ -242,6 +316,10 @@
                     </div>
                 </div>
             </section>
+
+            <footer class="app-footer">
+                MadeByshishir
+            </footer>
         </main>
 
         <!-- Fixed App-Like Bottom Navigation -->
@@ -264,7 +342,7 @@
             </div>
         </nav>
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const navItems = document.querySelectorAll('.bottom-nav .nav-item');
@@ -273,12 +351,12 @@
             window.switchTab = (targetId) => {
                 navItems.forEach(nav => {
                     nav.classList.remove('active');
-                    if(nav.dataset.target === targetId) nav.classList.add('active');
+                    if (nav.dataset.target === targetId) nav.classList.add('active');
                 });
-                
+
                 dashboards.forEach(dash => {
                     dash.classList.remove('active');
-                    if(dash.id === targetId) {
+                    if (dash.id === targetId) {
                         // Small timeout to allow CSS animations to trigger again
                         setTimeout(() => dash.classList.add('active'), 30);
                     }
@@ -299,8 +377,8 @@
 
             // Particles generation (optimized for mobile with fewer particles)
             const container = document.getElementById('particles');
-            if(container) {
-                for(let i=0; i<20; i++) {
+            if (container) {
+                for (let i = 0; i < 20; i++) {
                     const particle = document.createElement('div');
                     particle.classList.add('particle');
                     const size = Math.random() * 3 + 1 + 'px';
@@ -330,4 +408,5 @@
         document.head.appendChild(style);
     </script>
 </body>
+
 </html>
